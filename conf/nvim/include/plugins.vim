@@ -11,7 +11,11 @@ Plug 'jparise/vim-graphql'
 " Themes and visuals
 Plug 'joshdick/onedark.vim'
 Plug 'ryanoasis/vim-devicons'
-Plug 'chriskempson/base16-vim'
-Plug 'rainglow/vim'
+Plug 'ayu-theme/ayu-vim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'NLKNguyen/papercolor-theme'
+" Language-specific
+Plug 'bfrg/vim-cpp-modern'
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 " set runtimepath^=~/.vim/bundle/node
