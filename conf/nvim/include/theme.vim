@@ -11,8 +11,8 @@ set background=light
 " set background=dark
 
 " Pick a colorscheme by uncommenting the one you want
-" colorscheme PaperColor
 colorscheme PaperColor
+" colorscheme nord
 " colorscheme ayu
 
 " Run :colorscheme <c-d> to see all schemes

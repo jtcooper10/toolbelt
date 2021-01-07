@@ -15,7 +15,13 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'NLKNguyen/papercolor-theme'
 " Language-specific
-Plug 'bfrg/vim-cpp-modern'
+Plug 'Yohannfra/Vim-Goto-Header'
+" Plug 'bfrg/vim-cpp-modern'
 Plug 'leafgarland/typescript-vim'
 call plug#end()
 " set runtimepath^=~/.vim/bundle/node
+
+" GOTO header for C/C++
+let g:goto_header_include_dirs = [".", "/usr/include", "..", "~" ]
+let g:goto_header_use_find = 1
+

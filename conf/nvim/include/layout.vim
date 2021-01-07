@@ -6,3 +6,5 @@ set shiftwidth=4
 set expandtab
 set autoindent
 set number numberwidth=6
+" Control settings
+set scrolloff=8
