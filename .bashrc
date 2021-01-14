@@ -11,6 +11,7 @@ then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 export PATH
+export EDITOR='nvim'
 
 # Deno environment variables
 export DENO_INSTALL="/home/josh/.deno"
@@ -60,7 +61,7 @@ function ps1_create_bold {
 function init_ps1 {
     local CLEAR="\[\e[00m\]"
 
-    local PROMPT_CHAR="🦃"
+    local PROMPT_CHAR="☃️ "
     local USERNAME="\[`ps1_create_bold 39`\]\u${CLEAR}"
     local HOSTNAME="\[`ps1_create_color 30`\]\h${CLEAR}"
     local LOCATION="\[`ps1_create_bold 123`\] ~(\W) ${CLEAR}"
