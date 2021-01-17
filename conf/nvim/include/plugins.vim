@@ -6,6 +6,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'maxmellon/vim-jsx-pretty'
 " Autocomplete, etc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'moll/vim-node'
 Plug 'jparise/vim-graphql'
 " Themes and visuals

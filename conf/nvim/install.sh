@@ -27,4 +27,15 @@ do
     fi
 done
 
+# Install virtual envs for Python autocomplete
+if [ ! -z $HOME/venvs/jedi/bin/activate ]; then
+    echo "Creating virtual environments for Neovim Python plugins"
+    mkdir -p ~/venvs
+    python3 -m venv ~/venvs/jedi && source ~/venvs/jedi/bin/activate && python3 -m pip install jedi && deactivate
+    python3 -m venv ~/venvs/neovim && source ~/venvs/neovim/bin/activate && python3 -m pip install neovim && deactivate
+    python3 -m venv ~/venvs/black && source ~/venvs/black/bin/activate && python3 -m pip install black && deactivate
+    python3 -m venv ~/venvs/pylint && source ~/venvs/pylint/bin/activate && python3 -m pip install pylint && deactivate
+    echo "Python venvs created"
+fi
+
 echo 'Execution finished.'

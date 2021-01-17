@@ -81,3 +81,52 @@ init_ps1
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+##### UTILITY FUNCTIONS #####
+# Creates a global Python environment named after the current directory
+VENV_ROOT=$HOME/venvs
+function mkenv {
+    # Use the user-provided name if provided
+    local VENV_NAME=$(basename $PWD)
+    test $# -ge 1 && VENV_NAME=$1
+
+    # Check to see if that environment already exists
+    local NEW_ENV_PATH=$VENV_ROOT/$VENV_NAME
+    if [ -d "$NEW_ENV_PATH" ]; then
+        echo "Cannot create env for this directory; venv named $VENV_NAME already exists"
+        return
+    fi
+    # It doesn't exist! So create it
+    python3 -m venv "$NEW_ENV_PATH"
+    __ERRNO=$?
+    if [ $__ERRNO -eq 0 ]; then
+        echo "Virtual environment created at $NEW_ENV_PATH"
+    fi
+}
+# Sets the virtual environment of this directory, creating one if it doesn't exist already
+function venv {
+    # Use the user-provided name if provided
+    local VENV_NAME=$(basename $PWD)
+    test $# -ge 1 && VENV_NAME=$1
+
+    # Check if the environment exists
+    # If not, create one
+    local VENV_PATH=$VENV_ROOT/$VENV_NAME
+    test ! -d "$VENV_PATH" && mkenv $VENV_NAME
+    source $VENV_PATH/bin/activate
+}
+# Deletes the virtual environment of this directory
+function rmenv {
+    # Use the user-provided name if provided
+    local VENV_NAME=$(basename $PWD)
+    test $# -ge 1 && VENV_NAME=$1
+
+    # Check if the environment exists
+    # If it does, delete it
+    local VENV_PATH=$VENV_ROOT/$VENV_NAME
+    if [ -d "$VENV_PATH" ]; then
+        rm -rf "$VENV_PATH" && echo "Environment removed: $VENV_PATH"
+    else
+        echo "No environment found at $VENV_PATH"
+    fi
+}
