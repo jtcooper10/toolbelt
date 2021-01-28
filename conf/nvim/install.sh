@@ -9,26 +9,23 @@ if [ ! -x "$(command -v nvim)" ]; then
     exit 1
 fi
 
-# Create hard links for config files
+# Create soft links for config files
 # NOT COPIED: that way changes can easily be saved
 TMP_PATH=$HOME/.config/nvim
-mkdir -p $TMP_PATH/include
-if [ ! -f $TMP_PATH/init.vim ]; then
-    ln $SCRIPT_PATH/init.vim $TMP_PATH/init.vim
+if [ ! -d "$TMP_PATH" ]; then
+    ln -s "$SCRIPT_PATH/include" "$TMP_PATH/include"
+    # Link over any root-level config files (.json or .vim)
+    ln -s "$SCRIPT_PATH/*.vim" "$TMP_PATH/"
+    ln -s "$SCRIPT_PATH/*.json" "$TMP_PATH/"
+elif [ ! -f "$TMP_PATH/init.vim" ] || [ ! -f "$TMP_PATH/coc-settings.vim"]; then
+    ln -s "$SCRIPT_PATH/init.vim" "$TMP_PATH/init.vim"
+    ln -s "$SCRIPT_PATH/coc-settings.vim" "$TMP_PATH/coc-settings.vim"
+else
+    echo "Configuration already installed"
 fi
-for f in $SCRIPT_PATH/include/*.vim
-do
-    newfile=$TMP_PATH/include/$(basename -- $f)
-    if [ ! -f "$newfile" ]; then
-        echo "Installing NeoVim config file $f to: $newfile"
-        ln $f $newfile
-    else
-        echo "File $newfile was not installed (already exists)."
-    fi
-done
 
 # Install virtual envs for Python autocomplete
-if [ ! -z $HOME/venvs/jedi/bin/activate ]; then
+if [ ! -f "$HOME/venvs/jedi/bin/activate" ]; then
     echo "Creating virtual environments for Neovim Python plugins"
     mkdir -p ~/venvs
     python3 -m venv ~/venvs/jedi && source ~/venvs/jedi/bin/activate && python3 -m pip install jedi && deactivate

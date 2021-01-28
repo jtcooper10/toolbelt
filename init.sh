@@ -11,4 +11,4 @@ if [ -f "$HOME/.bashrc" ]; then
     cp $HOME/.bashrc $HOME/.bashrc.bk
     rm $HOME/.bashrc
 fi
-ln .bashrc $HOME/.bashrc
+ln -s .bashrc $HOME/.bashrc

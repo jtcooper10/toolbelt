@@ -9,9 +9,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-python', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-yaml', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+Plug 'lervag/vimtex'
 Plug 'moll/vim-node'
 Plug 'jparise/vim-graphql'
 " Themes and visuals
+Plug 'mswift42/vim-themes'
+Plug 'endel/vim-github-colorscheme'
 Plug 'joshdick/onedark.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ayu-theme/ayu-vim'
