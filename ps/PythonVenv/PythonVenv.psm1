@@ -5,7 +5,7 @@ function Test-PythonHost
 
     # Ensure that Python is installed in the environment.
     try {
-        if (Get-Command python3) {}
+        if (Get-Command python) {}
     }
     Catch {
         Write-Error "Python 3 must be installed."
@@ -67,7 +67,7 @@ function New-PythonEnv
     else
     {
         New-Item -Path $env:PYTHON_CUSTOM_ENV_ROOT -ItemType "Directory" -Name "$Name"
-        python3 -m venv "$NEW_ENV_PATH"
+        python -m venv "$NEW_ENV_PATH"
         Write-Host "Virtual environment created at path: $NEW_ENV_PATH"
     }
 }
